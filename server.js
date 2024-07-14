@@ -14,7 +14,7 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 
 app.post('/fitness-trainer', async (req, res) => {
-    const { prompt } = req.body
+    const { workoutPrompt } = req.body
 
     if (!prompt) {
         return res.status(400).send('Prompt is required!!!')
@@ -30,7 +30,7 @@ app.post('/fitness-trainer', async (req, res) => {
                 },
                 {
                     'role': 'user',
-                    'content': prompt
+                    'content': workoutPrompt
                 }
             ],
             temperature: 0.5,

@@ -7,21 +7,47 @@
  
 const form = document.querySelector('form')
 
-const name = document.getElementById('name').value
-const age = document.getElementById('age').value ? `I am ${age} years old.`: ''
-const gender = document.getElementById('gender').value // TODO: Get help from teacher
-const height = document.getElementById('height').value
-const weight = document.getElementById('weight').value
-const workoutTypes = document.getElementById('workoutTypes').value
-const medicalConditions = document.getElementById('medicalConditions').value
-const dietaryPreferences = document.getElementById('dietaryPreferences').value
-const workoutFrequency = document.getElementById('workoutFrequency').value
-const workoutAvailability = document.getElementById('workoutAvailability').value
-const preferredLocation = document.getElementById('preferredLocation').value
-const result = document.getElementById('result')
+form.addEventListener('submit', async (event) => {
+    event.preventDefault()
 
-const medicalConditionsMessage = medicalConditions ? `My medical issue is ${medicalConditions}`: ''
-const dietaryPreferencesMessage = `My dietary preferences is ${dietaryPreferences}`
-const workoutFrequencyMessage = workoutFrequency ? `I would like to workout ${workoutFrequency}`: ''
+    const name = document.getElementById('name').value
+    const age = document.getElementById('age').value
+    const gender = document.getElementById('gender').value // TODO: Get help from teacher
+    const height = document.getElementById('height').value
+    const weight = document.getElementById('weight').value
+    const workoutTypes = document.getElementById('workoutTypes').value
+    const medicalConditions = document.getElementById('medicalConditions').value
+    const dietaryPreferences = document.getElementById('dietaryPreferences').value
+    const workoutFrequency = document.getElementById('workoutFrequency').value
+    const workoutAvailability = document.getElementById('workoutAvailability').value
+    const preferredLocation = document.getElementById('preferredLocation').value
+    const result = document.getElementById('result')
 
-const workoutPrompt = `My name is ${name}.${age}.`
+
+    const medicalConditionsMessage = medicalConditions ? `My medical issue is ${medicalConditions}`: ''
+    const dietaryPreferencesMessage = `My dietary preferences is ${dietaryPreferences}`
+    const workoutFrequencyMessage = workoutFrequency ? `I would like to workout ${workoutFrequency}`: ''
+
+    const workoutPrompt = `My name is ${name}.I am ${age} years old.${gender}.I am ${height} and ${weight}.My workout type is ${workoutTypes}.${medicalConditionsMessage}.${dietaryPreferencesMessage}.${workoutFrequencyMessage}.I am available to workout ${workoutAvailability}.I prefer to workout ${preferredLocation}.`
+
+    try {
+        const response = await fetch('/fitness-trainer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ prompt: workoutPrompt })
+        })
+
+        if (response.ok) {
+            const data = await response.json()
+            const text = document.createElement('p')
+            text.textContent = data
+            result.appendChild(text)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+})
+
