@@ -26,7 +26,7 @@ app.post('/fitness-trainer', async (req, res) => {
             messages: [
                 {
                     'role': 'system',
-                    'content': 'You are a helpful fitness trainer and based on person\'s information you will create fitness training advice.'
+                    'content': 'You are a helpful fitness trainer and based on person\'s information you will create a fitness training workout plan.'
                 },
                 {
                     'role': 'user',
