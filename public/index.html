@@ -12,17 +12,17 @@
     <form class="space-y-4">
         <div>
             <label for="name" class="block text-lg">What is your name?</label>
-            <input type="text" id="name" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+            <input type="text" id="name" placeholder="Type here" class="input input-bordered w-full max-w-xs" required/>
         </div>
 
         <div>
             <label for="age" class="block text-lg">How old are you?</label>
-            <input type="text" id="age" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+            <input type="text" id="age" placeholder="Type here" class="input input-bordered w-full max-w-xs" required />
         </div>
         
         <div>
             <label for="gender" class="block text-lg">What is your gender?</label>
-            <select id="gender" class="select select-bordered w-full max-w-xs">
+            <select id="gender" class="select select-bordered w-full max-w-xs" required>
                 <option disabled selected>Select your gender</option>
                 <option>Male</option>
                 <option>Female</option>
@@ -32,7 +32,7 @@
 
         <div>
             <label for="height" class="block text-lg">What is your height?</label>
-            <select id="height" class="select select-bordered w-full max-w-xs">
+            <select id="height" class="select select-bordered w-full max-w-xs" required>
                 <option disabled selected>Select your height</option>
                 <option>4'9" (145 cm)</option>
                 <option>4'10" (147 cm)</option>
@@ -61,7 +61,7 @@
 
         <div>
             <label for="weight" class="block text-lg">What is your weight?</label>
-            <select id="weight" class="select select-bordered w-full max-w-xs">
+            <select id="weight" class="select select-bordered w-full max-w-xs" required>
                 <option disabled selected>Select your weight</option>
                 <option>90 lbs (41 kg)</option>
                 <option>100 lbs (45 kg)</option>
@@ -90,18 +90,15 @@
 
         <div>
             <label for="workoutTypes" class="block text-lg">What types of workouts do you prefer?</label>
-            <select id="workoutTypes" class="select select-bordered w-full max-w-xs">
+            <select id="workoutTypes" class="select select-bordered w-full max-w-xs" required>
                 <option disabled selected>Select workout type</option>
                 <option>Cardio</option>
                 <option>Strength Training</option>
                 <option>Yoga</option>
                 <option>Pilates</option>
+                <option>Gain Muscle</option>
+                <option>Cross Fit</option>
             </select>
-        </div>
-
-        <div>
-            <label for="activityLevel" class="block text-lg">How active are you on a daily basis?</label>
-            <input type="text" id="activityLevel" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
         </div>
 
         <div>
@@ -111,7 +108,7 @@
 
         <div>
             <label for="dietaryPreferences" class="block text-lg">Do you follow any specific dietary preferences or restrictions?</label>
-            <select id="dietaryPreferences" class="select select-bordered w-full max-w-xs">
+            <select id="dietaryPreferences" class="select select-bordered w-full max-w-xs" required>
                 <option disabled selected>Select dietary preference</option>
                 <option>Vegan</option>
                 <option>Vegetarian</option>
@@ -137,7 +134,7 @@
 
         <div>
             <label for="workoutAvailability" class="block text-lg">What is your availability for workouts?</label>
-            <select id="workoutAvailability" class="select select-bordered w-full max-w-xs">
+            <select id="workoutAvailability" class="select select-bordered w-full max-w-xs" required>
                 <option disabled selected>Select availability</option>
                 <option>Mornings</option>
                 <option>Afternoons</option>
@@ -148,7 +145,7 @@
 
         <div>
             <label for="preferredLocation" class="block text-lg">Where do you prefer to exercise?</label>
-            <select id="preferredLocation" class="select select-bordered w-full max-w-xs">
+            <select id="preferredLocation" class="select select-bordered w-full max-w-xs" required>
                 <option disabled selected>Select location</option>
                 <option>Home</option>
                 <option>Gym</option>
@@ -158,6 +155,9 @@
 
         <button type="submit" class="btn btn-primary mt-4">Submit</button>
     </form>
+    <div id="result">
+
+    </div>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script.js"></script>
