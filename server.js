@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 app.post('/fitness-trainer', async (req, res) => {
     const { workoutPrompt } = req.body
 
-    if (!prompt) {
+    if (!workoutPrompt) {
         return res.status(400).send('Prompt is required!!!')
     }
 
@@ -34,7 +34,7 @@ app.post('/fitness-trainer', async (req, res) => {
                 }
             ],
             temperature: 0.5,
-            max_tokens: 300,
+            max_tokens: 120,
             top_p: 1
         })
 
