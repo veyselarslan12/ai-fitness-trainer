@@ -44,7 +44,7 @@ const form = document
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt: workoutPrompt }),
+        body: JSON.stringify({ workoutPrompt }),
       });
 
       console.log(workoutPrompt)
