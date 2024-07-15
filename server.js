@@ -34,14 +34,19 @@ app.post('/fitness-trainer', async (req, res) => {
                 }
             ],
             temperature: 0.5,
-            max_tokens: 1000,
+            max_tokens: 300,
             top_p: 1
         })
 
         console.log('Response from OpenAI API:', JSON.stringify(response))
-
+        if (response && response.choices && response.choices.length > 0) {
+            res.json(response.choices[0].message);
+        } else {
+            res.status(500).send('No valid response from OpenAI');
+        }
 
     } catch (error) {
+        console.log(error)
         res.status(500).send('Error generating fitness training advice')
     }
 })

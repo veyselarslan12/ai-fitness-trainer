@@ -52,8 +52,10 @@ const form = document
       if (response.ok) {
         const data = await response.json();
         const text = document.createElement("p");
-        text.textContent = data;
+        text.textContent = data.content
         result.appendChild(text);
+      } else {
+        result.textContent = 'Error generating fitness workout advice.'
       }
       
     } catch (error) {
