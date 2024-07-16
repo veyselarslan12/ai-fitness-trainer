@@ -36,7 +36,14 @@ const form = document
       ? `I would like to workout ${workoutFrequency}`
       : "";
 
-    const workoutPrompt = `My name is ${name}.I am ${age} years old.${gender}.I am ${height} and ${weight}.My workout type is ${workoutTypes}.${medicalConditionsMessage}.${dietaryPreferencesMessage}.${workoutFrequencyMessage}.I am available to workout ${workoutAvailability}.I prefer to workout ${preferredLocation}.`;
+    let genderMessage = ''  
+    
+    if (gender === 'male') {
+       genderMessage = 'I am a male'
+    } else if (gender === 'female') {
+      genderMessage = 'I am a female'
+    } 
+    const workoutPrompt = `My name is ${name}.I am ${age} years old.${genderMessage}.I am ${height} and ${weight}.My workout type is ${workoutTypes}.${medicalConditionsMessage}.${dietaryPreferencesMessage}.${workoutFrequencyMessage}.I am available to workout ${workoutAvailability}.I prefer to workout ${preferredLocation}.`;
 
     try {
       const response = await fetch('/fitness-trainer', {
