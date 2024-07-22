@@ -6,120 +6,131 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <title>AI Fitness Trainer</title>
 </head>
-<body class="m-6 space-y-[50px]">
-    <h1 class="text-3xl font-bold text-center">AI Fitness Trainer</h1>
-
-    <form class="space-y-4">
-        <div>
-            <label for="name" class="block text-lg">What is your name?</label>
-            <input type="text" id="name" placeholder="Type here" class="input input-bordered w-full max-w-xs" required/>
-        </div>
-
-        <div>
-            <label for="age" class="block text-lg">How old are you?</label>
-            <input type="text" id="age" placeholder="Type here" class="input input-bordered w-full max-w-xs" required />
-        </div>
-        
-        <div>
-            <label for="gender" class="block text-lg">What is your gender?</label>
-            <select id="gender" class="select select-bordered w-full max-w-xs" required>
-                <option disabled selected>Select your gender</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Prefer not to say</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="height" class="block text-lg">What is your height?</label>
-            <select id="height" class="select select-bordered w-full max-w-xs" required>
-                <option disabled selected>Select your height</option>
-                <option>4'9" (145 cm)</option>
-                <option>4'10" (147 cm)</option>
-                <option>4'11" (150 cm)</option>
-                <option>5'0" (152 cm)</option>
-                <option>5'1" (155 cm)</option>
-                <option>5'2" (157 cm)</option>
-                <option>5'3" (160 cm)</option>
-                <option>5'4" (163 cm)</option>
-                <option>5'5" (165 cm)</option>
-                <option>5'6" (168 cm)</option>
-                <option>5'7" (170 cm)</option>
-                <option>5'8" (173 cm)</option>
-                <option>5'9" (175 cm)</option>
-                <option>5'10" (178 cm)</option>
-                <option>5'11" (180 cm)</option>
-                <option>6'0" (183 cm)</option>
-                <option>6'1" (185 cm)</option>
-                <option>6'2" (188 cm)</option>
-                <option>6'3" (191 cm)</option>
-                <option>6'4" (193 cm)</option>
-                <option>6'5" (196 cm)</option>
-                <option>6'6" (198 cm)</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="weight" class="block text-lg">What is your weight?</label>
-            <select id="weight" class="select select-bordered w-full max-w-xs" required>
-                <option disabled selected>Select your weight</option>
-                <option>90 lbs (41 kg)</option>
-                <option>100 lbs (45 kg)</option>
-                <option>110 lbs (50 kg)</option>
-                <option>120 lbs (54 kg)</option>
-                <option>130 lbs (59 kg)</option>
-                <option>140 lbs (64 kg)</option>
-                <option>150 lbs (68 kg)</option>
-                <option>160 lbs (73 kg)</option>
-                <option>170 lbs (77 kg)</option>
-                <option>180 lbs (82 kg)</option>
-                <option>190 lbs (86 kg)</option>
-                <option>200 lbs (91 kg)</option>
-                <option>210 lbs (95 kg)</option>
-                <option>220 lbs (100 kg)</option>
-                <option>230 lbs (104 kg)</option>
-                <option>240 lbs (109 kg)</option>
-                <option>250 lbs (113 kg)</option>
-                <option>260 lbs (118 kg)</option>
-                <option>270 lbs (122 kg)</option>
-                <option>280 lbs (127 kg)</option>
-                <option>290 lbs (132 kg)</option>
-                <option>300 lbs (136 kg)</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="workoutTypes" class="block text-lg">What types of workouts do you prefer?</label>
-            <select id="workoutTypes" class="select select-bordered w-full max-w-xs" required>
-                <option disabled selected>Select workout type</option>
-                <option>Cardio</option>
-                <option>Strength Training</option>
-                <option>Yoga</option>
-                <option>Pilates</option>
-                <option>Gain Muscle</option>
-                <option>Cross Fit</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="workoutFrequency" class="block text-lg">How many days would you like to workout?</label>
-            <select id="workoutFrequency" class="select select-bordered w-full max-w-xs" required>
-                <option disabled selected>Select frequency</option>
-                <option>1 day a week</option>
-                <option>2 days a week</option>
-                <option>3 days a week</option>
-                <option>4 days a week</option>
-                <option>5 days a week</option>
-                <option>6 days a week</option>
-                <option>7 days a week</option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary mt-4">Submit</button>
-    </form>
-    <div id="result" class="mt-8">
-
+<body class="m-6 space-y-[20px]">
+    <div class="rounded-box bg-success mx-[500px]">
+        <h1 class="text-3xl text-base-100 font-bold text-center">AI Fitness Trainer</h1>
     </div>
+    <div class="flex w-full flex-col lg:flex-row">
+        <div class="card bg-warning rounded-box">
+            <form class="space-y-4 m-[20px]">
+                <div>
+                    <label for="name" class="block text-lg">What is your name?</label>
+                    <input type="text" id="name" placeholder="Type here" class="input input-bordered w-full max-w-xs" required/>
+                </div>
+        
+                <div>
+                    <label for="age" class="text-lg">How old are you?</label>
+                    <input type="text" id="age" placeholder="Type here" class="input input-bordered w-full max-w-xs" required />
+                </div>
+                
+                <div>
+                    <label for="gender" class="block text-lg">What is your gender?</label>
+                    <select id="gender" class="select select-bordered w-full max-w-xs" required>
+                        <option disabled selected>Select your gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Prefer not to say</option>
+                    </select>
+                </div>
+        
+                <div>
+                    <label for="height" class="block text-lg">What is your height?</label>
+                    <select id="height" class="select select-bordered w-full max-w-xs" required>
+                        <option disabled selected>Select your height</option>
+                        <option>4'9" (145 cm)</option>
+                        <option>4'10" (147 cm)</option>
+                        <option>4'11" (150 cm)</option>
+                        <option>5'0" (152 cm)</option>
+                        <option>5'1" (155 cm)</option>
+                        <option>5'2" (157 cm)</option>
+                        <option>5'3" (160 cm)</option>
+                        <option>5'4" (163 cm)</option>
+                        <option>5'5" (165 cm)</option>
+                        <option>5'6" (168 cm)</option>
+                        <option>5'7" (170 cm)</option>
+                        <option>5'8" (173 cm)</option>
+                        <option>5'9" (175 cm)</option>
+                        <option>5'10" (178 cm)</option>
+                        <option>5'11" (180 cm)</option>
+                        <option>6'0" (183 cm)</option>
+                        <option>6'1" (185 cm)</option>
+                        <option>6'2" (188 cm)</option>
+                        <option>6'3" (191 cm)</option>
+                        <option>6'4" (193 cm)</option>
+                        <option>6'5" (196 cm)</option>
+                        <option>6'6" (198 cm)</option>
+                    </select>
+                </div>
+        
+                <div>
+                    <label for="weight" class="block text-lg">What is your weight?</label>
+                    <select id="weight" class="select select-bordered w-full max-w-xs" required>
+                        <option disabled selected>Select your weight</option>
+                        <option>90 lbs (41 kg)</option>
+                        <option>100 lbs (45 kg)</option>
+                        <option>110 lbs (50 kg)</option>
+                        <option>120 lbs (54 kg)</option>
+                        <option>130 lbs (59 kg)</option>
+                        <option>140 lbs (64 kg)</option>
+                        <option>150 lbs (68 kg)</option>
+                        <option>160 lbs (73 kg)</option>
+                        <option>170 lbs (77 kg)</option>
+                        <option>180 lbs (82 kg)</option>
+                        <option>190 lbs (86 kg)</option>
+                        <option>200 lbs (91 kg)</option>
+                        <option>210 lbs (95 kg)</option>
+                        <option>220 lbs (100 kg)</option>
+                        <option>230 lbs (104 kg)</option>
+                        <option>240 lbs (109 kg)</option>
+                        <option>250 lbs (113 kg)</option>
+                        <option>260 lbs (118 kg)</option>
+                        <option>270 lbs (122 kg)</option>
+                        <option>280 lbs (127 kg)</option>
+                        <option>290 lbs (132 kg)</option>
+                        <option>300 lbs (136 kg)</option>
+                    </select>
+                </div>
+        
+                <div>
+                    <label for="workoutTypes" class="block text-lg">What types of workouts do you prefer?</label>
+                    <select id="workoutTypes" class="select select-bordered w-full max-w-xs" required>
+                        <option disabled selected>Select workout type</option>
+                        <option>Cardio</option>
+                        <option>Strength Training</option>
+                        <option>Yoga</option>
+                        <option>Pilates</option>
+                        <option>Gain Muscle</option>
+                        <option>Cross Fit</option>
+                    </select>
+                </div>
+        
+                <div>
+                    <label for="workoutFrequency" class="block text-lg">How many days would you like to workout?</label>
+                    <select id="workoutFrequency" class="select select-bordered w-full max-w-xs" required>
+                        <option disabled selected>Select frequency</option>
+                        <option>1 day a week</option>
+                        <option>2 days a week</option>
+                        <option>3 days a week</option>
+                        <option>4 days a week</option>
+                        <option>5 days a week</option>
+                        <option>6 days a week</option>
+                        <option>7 days a week</option>
+                    </select>
+                </div>
+                <div class="flex justify-center mt-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="divider lg:divider-horizontal mx-[60px]">WORKOUT PLAN</div>
+        <div class="card bg-secondary-content rounded-box flex-grow">
+            <div id="result" class="mt-8">
+
+            </div>
+        </div>
+      </div>
+    
+    
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script.js"></script>
