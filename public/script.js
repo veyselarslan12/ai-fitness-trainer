@@ -1,10 +1,3 @@
-// const height = "5'10\""
-// const weight = ""
-// const heightMessage = height ? `My height is ${height}`: ''
-// const weightMessage = weight ? `My weight is ${weight}`: ''
-
-// const fakePrompt = `You are my fitness trainer and i want you to a suggest fitness plan, ${heightMessage} ${weightMessage} `
-
 const form = document
   .querySelector("form")
   .addEventListener("submit", async (event) => {
@@ -12,29 +5,13 @@ const form = document
 
     const name = document.getElementById("name").value;
     const age = document.getElementById("age").value;
-    const gender = document.getElementById("gender").value; // TODO: Get help from teacher
+    const gender = document.getElementById("gender").value;
     const height = document.getElementById("height").value;
     const weight = document.getElementById("weight").value;
     const workoutTypes = document.getElementById("workoutTypes").value;
-    const medicalConditions =
-      document.getElementById("medicalConditions").value;
-    const dietaryPreferences =
-      document.getElementById("dietaryPreferences").value;
     const workoutFrequency = document.getElementById("workoutFrequency").value;
-    const workoutAvailability = document.getElementById(
-      "workoutAvailability"
-    ).value;
-    const preferredLocation =
-      document.getElementById("preferredLocation").value;
+    
     const result = document.getElementById("result");
-
-    const medicalConditionsMessage = medicalConditions
-      ? `My medical issue is ${medicalConditions}`
-      : "";
-    const dietaryPreferencesMessage = `My dietary preferences is ${dietaryPreferences}`;
-    const workoutFrequencyMessage = workoutFrequency
-      ? `I would like to workout ${workoutFrequency}`
-      : "";
 
     let genderMessage = ''  
     
@@ -43,7 +20,7 @@ const form = document
     } else if (gender === 'female') {
       genderMessage = 'I am a female'
     } 
-    const workoutPrompt = `My name is ${name}.I am ${age} years old.${genderMessage}.I am ${height} and ${weight}.My workout type is ${workoutTypes}.${medicalConditionsMessage}.${dietaryPreferencesMessage}.${workoutFrequencyMessage}.I am available to workout ${workoutAvailability}.I prefer to workout ${preferredLocation}.`;
+    const workoutPrompt = `My name is ${name}.I am ${age} years old.${genderMessage}.I am ${height} and ${weight}.My workout type is ${workoutTypes}.${workoutFrequency}.`;
 
     try {
       const response = await fetch('/fitness-trainer', {
@@ -58,9 +35,7 @@ const form = document
 
       if (response.ok) {
         const data = await response.json();
-        const text = document.createElement("p");
-        text.textContent = data.content
-        result.appendChild(text);
+        result.innerHTML = formatWorkoutPlan(data.content)
       } else {
         result.textContent = 'Error generating fitness workout advice.'
       }
@@ -69,3 +44,47 @@ const form = document
       console.log(error);
     }
   });
+
+function formatWorkoutPlan(content) {
+  const lines = content.split('\n');
+  let html = '';
+  let currentDay = '';
+  let currentWorkouts = [];
+
+  lines.forEach(line => {
+      if (line.startsWith('Day ')) {
+          if (currentDay) {
+              html += createCard(currentDay, currentWorkouts);
+              currentWorkouts = [];
+          }
+          currentDay = line;
+      } else if (line.startsWith('- ')) {
+          currentWorkouts.push(line.slice(2));
+      } else if (line.trim()) {
+          if (currentDay) {
+              html += createCard(currentDay, currentWorkouts);
+              currentDay = '';
+              currentWorkouts = [];
+          }
+          html += `<h2>${line}</h2>`;
+      }
+  });
+
+  if (currentDay) {
+      html += createCard(currentDay, currentWorkouts);
+  }
+
+  return `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">${html}</div>`;
+}
+
+function createCard(day, workouts) {
+  let workoutItems = workouts.map(workout => `<li>${workout}</li>`).join('');
+  return `
+      <div class="card shadow-lg bg-white">
+          <div class="card-body">
+              <h3 class="card-title">${day}</h3>
+              <ul>${workoutItems}</ul>
+          </div>
+      </div>
+  `;
+}

@@ -26,7 +26,7 @@ app.post('/fitness-trainer', async (req, res) => {
             messages: [
                 {
                     'role': 'system',
-                    'content': 'You are a helpful fitness trainer and based on person\'s information you will create a fitness training workout plan.And give me back a numbered list.'
+                    'content': 'You are a helpful fitness trainer and based on person\'s information you will create a fitness training workout plan.This plan is going to be a list of days.'
                 },
                 {
                     'role': 'user',
@@ -34,7 +34,7 @@ app.post('/fitness-trainer', async (req, res) => {
                 }
             ],
             temperature: 0.5,
-            max_tokens: 300,
+            max_tokens: 600,
             top_p: 1
         })
 
