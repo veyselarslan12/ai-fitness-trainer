@@ -74,7 +74,7 @@ function formatWorkoutPlan(content) {
       html += createCard(currentDay, currentWorkouts);
   }
 
-  return `<div class="grid grid-cols-1 gap-4">${html}</div>`;
+  return `<div class="grid grid-cols-2 gap-4">${html}</div>`;
 }
 
 function createCard(day, workouts) {
